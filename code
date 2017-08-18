@@ -1,0 +1,44 @@
+import random
+class Die(object):
+  #A dice has a feature of number about how many sides it has when it's established,like 6.
+  def __init__(self):       #defines construct, self allows it to exist for the entirety of the class
+    self.sides=6
+
+  """because a dice contains at least 4 planes.
+  So use this method to give it a judgement when you need to change the instance attributes."""
+  def set_sides(self, sides_change): #defines function set_sides with two arguments, including self from above
+    if sides_change >= 4: #sets parameter that argument must be greater than or equal to 4 to execute code inside
+      if sides_change != 6: # sets parameter that if argument does not equal 6, execute code indented below
+          print("change sides from 6 to ",sides_change," !")
+      self.sides = sides_change # changes variable from above to equal entered variables if variables fit above parameters
+    else:
+      print("wrong sides! sides set to 6")
+# This lets user know the die is rolling, however, I need to figure out how print the string "Rolling..." only once, no matter the mound of dice rolled.
+  def roll(self):
+    print "Rolling..."
+    print ".\n" * 3
+    return random.randint(1, self.sides)
+
+
+def select_die(number_of_die):
+    if number_of_die == 1:
+        d = Die()
+        d.set_sides(int(raw_input('Enter Sides: ')))
+        print d.roll()
+    if number_of_die == 2:
+        d = Die()
+        d1 = Die()
+        d.set_sides(int(raw_input('Enter Sides: ')))
+        d1.set_sides(int(raw_input('Enter Sides: ')))
+        print (d.roll(), d1.roll())
+    if number_of_die >= 3:
+        print "Too many die selected, number of die set to two."
+        d = Die()
+        d1 = Die()
+        d.set_sides(int(raw_input('Enter Sides: ')))
+        d1.set_sides(int(raw_input('Enter Sides: ')))
+        print (d.roll(), d1.roll())
+
+die_number = int(raw_input("Enter the number of die you wish to roll: "))
+
+select_die(die_number)
